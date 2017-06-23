@@ -1,7 +1,7 @@
 <ul id='blocks'>
-  <% 4.times do %>
+  <% @images.each do |image| %>
     <li class='ui-state-default'>
-      <%= image_tag "railsroads/#{(1..9).to_a.sample}.jpg" %>
+      <%= image_tag(image) %>
     </li>
   <% end %>
 </ul>
