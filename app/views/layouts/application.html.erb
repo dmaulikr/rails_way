@@ -1,14 +1,28 @@
 <!DOCTYPE html>
-<html>
+<html lang='en'>
   <head>
-    <title>RailsWay</title>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=no'>
+
+    <title>Rails Way</title>
     <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', 'data-turbolinks-track': 'reload', media: 'all' %>
   </head>
 
   <body>
-    <%= yield %>
+    <main>
+      <div style='text-align: center'>
+        <h3>Rails Way</h3>
+        <h4>(level #<%= params[:id] %>)</h4>
+      </div>
+
+      <div id='container'>
+        <%= yield %>
+      </div>
+    </main>
+
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </body>
 </html>
