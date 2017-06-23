@@ -1,7 +1,14 @@
-<ul id='blocks'>
-  <% @images.each do |image| %>
-    <li class='ui-state-default'>
-      <%= image_tag(image) %>
-    </li>
-  <% end %>
-</ul>
+<div style='text-align: center'>
+  <h3>Rails Way</h3>
+  <h4>(level #<%= params[:id] %>)</h4>
+</div>
+
+<div id='container'>
+  <ul id='blocks'>
+    <% @images.each do |image| %>
+      <li class='ui-state-default'>
+        <%= image_tag(image) %>
+      </li>
+    <% end %>
+  </ul>
+</div>

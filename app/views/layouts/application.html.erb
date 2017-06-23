@@ -13,14 +13,7 @@
 
   <body>
     <main>
-      <div style='text-align: center'>
-        <h3>Rails Way</h3>
-        <h4>(level #<%= params[:id] %>)</h4>
-      </div>
-
-      <div id='container'>
-        <%= yield %>
-      </div>
+      <%= yield %>
     </main>
 
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
