@@ -19,8 +19,10 @@ gem 'touchpunch-rails', github: 'geothird/touchpunch-rails'
 
 group :development, :test do
   gem 'pry'
+  gem 'rspec-rails'
 end
 
 group :development do
   gem 'spring'
+  gem 'spring-commands-rspec'
 end
