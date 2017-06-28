@@ -12,6 +12,8 @@ gem 'puma'
 gem 'sass-rails'
 gem 'turbolinks'
 gem 'uglifier'
+gem 'bootstrap', github: 'twbs/bootstrap-rubygem'
+gem 'font-awesome-rails'
 
 gem 'jquery-rails'
 gem 'jquery-ui-rails'

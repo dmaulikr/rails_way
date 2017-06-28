@@ -1,14 +1,7 @@
-<div style='text-align: center'>
-  <h3>Rails Way</h3>
-  <h4>(level #<%= params[:id] %>)</h4>
-</div>
-
-<div id='container'>
-  <ul id='blocks'>
+<div class='row align-items-start'>
+  <div id='railroads' class='row align-items-center m-5'>
     <% @images.each do |image| %>
-      <li class='ui-state-default'>
-        <%= image_tag(image) %>
-      </li>
+      <%= image_tag image, class: 'img-fluid p-1 col-6' %>
     <% end %>
   </ul>
 </div>

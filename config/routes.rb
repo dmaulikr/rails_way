@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  root 'games#index'
+  root 'pages#index'
 
-  resources :games, only: %i[index show]
+  get 'about', to: 'pages#about'
+
+  resources :games, param: :level, only: %i[index show]
 end
