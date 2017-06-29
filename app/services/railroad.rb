@@ -25,7 +25,8 @@ class Railroad
   def games_permutation
     blocks_permutation.each_with_object([]) do |blocks, games|
       available_entrance_and_exit_positions.permutation(2).each do |entrance_position, exit_position|
-        games << Game.new(blocks, width: @width, entrance_position: entrance_position, exit_position: exit_position)
+        games << Game.new(blocks, width: @width, height: @height,
+          entrance_position: entrance_position, exit_position: exit_position)
       end
     end
   end

@@ -1,7 +1,8 @@
 class Game
-  def initialize(blocks, width:, entrance_position:, exit_position:)
+  def initialize(blocks, width:, height:, entrance_position:, exit_position:)
     @blocks = blocks
     @width  = width
+    @height = height
 
     @entrance_position = entrance_position
     @exit_position     = exit_position
@@ -19,17 +20,19 @@ class Game
 
   private
 
-  attr_reader :blocks, :width, :entrance_position, :exit_position,
+  attr_reader :blocks, :width, :height, :entrance_position, :exit_position,
     :entrance_direction, :exit_direction, :train, :goal
 
   def move(direction)
     @train = update_position(train, direction)
 
     return true  if train == goal
-    return false if train.any?(&:negative?) # Hitted the wall
+    return false if train.any?(&:negative?) || train.first >= height || train.last >= width # Hits the wall
 
     next_direction = blocks.each_slice(width)
       .to_a[train.first][train.last][inverted_direction(direction)]
+
+    return false if next_direction.nil? # Player loses the game because blocks don't match
 
     move(next_direction)
   end
