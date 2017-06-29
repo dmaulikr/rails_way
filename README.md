@@ -1,3 +1,3 @@
 # Rails Way
 
-> Little game built with Turbolinks (iOS and Android)
+> Little game built with **Rails** and **Turbolinks** (iOS and Android)
