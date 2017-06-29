@@ -8,10 +8,11 @@
     <title>Rails Way</title>
 
     <%= csrf_meta_tags %>
-    <%= stylesheet_link_tag 'application', 'data-turbolinks-track': 'reload', media: 'all' %>
+    <%= stylesheet_link_tag    'application', 'data-turbolinks-track': 'reload', media: 'all' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body data-controller='<%= controller_path %>' data-action='<%= action_name %>'>
     <div id='container'>
       <%= yield %>
 
@@ -34,7 +35,5 @@
         </div>
       </nav>
     </div>
-
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </body>
 </html>
