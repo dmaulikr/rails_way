@@ -5,6 +5,19 @@ class Railroad
     @level  = level
   end
 
+  def games_permutation
+    blocks_permutation.each_with_object([]) do |blocks, games|
+      available_entrance_and_exit_positions.permutation(2).each do |entrance, exit|
+        games << Game.new(blocks, width: @width, height: @height,
+                          entrance: entrance, exit: exit, level: @level)
+      end
+    end
+  end
+
+  def blocks_permutation
+    block_images.repeated_permutation(@width * @height).to_a
+  end
+
   def available_entrance_and_exit_positions
     [].tap do |results|
       @width.times do |index|
@@ -15,19 +28,6 @@ class Railroad
       @height.times do |index|
         results << ['L', index, 0]
         results << ['R', index, @width - 1]
-      end
-    end
-  end
-
-  def blocks_permutation
-    block_images.repeated_permutation(@width * @height).to_a
-  end
-
-  def games_permutation
-    blocks_permutation.each_with_object([]) do |blocks, games|
-      available_entrance_and_exit_positions.permutation(2).each do |entrance, exit|
-        games << Game.new(blocks, width: @width, height: @height,
-                          entrance: entrance, exit: exit, level: @level)
       end
     end
   end

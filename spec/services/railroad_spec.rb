@@ -1,6 +1,18 @@
 RSpec.describe Railroad do
   subject { described_class.new 2, 2, level: 4 }
 
+  describe '#games_permutation' do
+    it 'returns an array with all possible games permutation' do
+      expect(subject.games_permutation.count).to eq(367_416)
+    end
+  end
+
+  describe '#blocks_permutation' do
+    it 'returns an array with all possible blocks permutation' do
+      expect(subject.blocks_permutation.count).to eq(6_561)
+    end
+  end
+
   describe '#available_entrance_and_exit_positions' do
     context '2 x 2' do
       it 'returns available entrance and exit positions' do
@@ -24,18 +36,6 @@ RSpec.describe Railroad do
           ['R', 0, 1], ['R', 1, 1], ['R', 2, 1]
         ])
       end
-    end
-  end
-
-  describe '#blocks_permutation' do
-    it 'returns an array with all possible blocks permutation' do
-      expect(subject.blocks_permutation.count).to eq(6_561)
-    end
-  end
-
-  describe '#games_permutation' do
-    it 'returns an array with all possible games permutation' do
-      expect(subject.games_permutation.count).to eq(367_416)
     end
   end
 end
