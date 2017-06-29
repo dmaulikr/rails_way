@@ -1,27 +1,23 @@
 class Game
-  def initialize(blocks, width:, height:, entrance_position:, exit_position:)
+  def initialize(blocks, width:, height:, entrance:, exit:)
     @blocks = blocks
     @width  = width
     @height = height
 
-    @entrance_position = entrance_position
-    @exit_position     = exit_position
+    @entrance = entrance
+    @exit     = exit
   end
 
   def play
-    @entrance_direction = entrance_position.first
-    @exit_direction     = exit_position.first
+    @train = update_position(entrance.last(2), entrance.first)
+    @goal  = update_position(exit.last(2),     exit.first)
 
-    @train = update_position(entrance_position.last(2), entrance_direction)
-    @goal  = update_position(exit_position.last(2),     exit_direction)
-
-    move(inverted_direction(entrance_direction))
+    move(inverted_direction(entrance.first))
   end
 
   private
 
-  attr_reader :blocks, :width, :height, :entrance_position, :exit_position,
-    :entrance_direction, :exit_direction, :train, :goal
+  attr_reader :blocks, :width, :height, :entrance, :exit, :train, :goal
 
   def move(direction)
     @train = update_position(train, direction)
@@ -53,11 +49,4 @@ class Game
   def inverted_direction(direction)
     { 'U' => 'D', 'D' => 'U', 'L' => 'R', 'R' => 'L' }[direction]
   end
-
-  # def number_of_solutions(game)
-  # end
-  #
-  # def correct?(game)
-  #   game = { entrance_position: ['U', 0, 0], exit_position: ['D', 1, 0], block: ['ULRD', 'ULRD', 'ULRD', 'ULRD'] }
-  # end
 end

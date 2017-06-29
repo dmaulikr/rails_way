@@ -9,8 +9,7 @@ RSpec.describe Game do
           { 'U' => 'L' }
         ]
 
-        described_class.new(block, width: 2, height: 2,
-          entrance_position: ['U', 0, 0], exit_position: ['D', 1, 0])
+        described_class.new(block, width: 2, height: 2, entrance: ['U', 0, 0], exit: ['D', 1, 0])
       end
 
       it 'returns true' do
@@ -27,8 +26,7 @@ RSpec.describe Game do
           { 'U' => 'D', 'R' => 'L' }
         ]
 
-        described_class.new(block, width: 2, height: 2,
-          entrance_position: ['U', 0, 0], exit_position: ['D', 1, 0])
+        described_class.new(block, width: 2, height: 2, entrance: ['U', 0, 0], exit: ['D', 1, 0])
       end
 
       it 'returns false' do
@@ -45,8 +43,7 @@ RSpec.describe Game do
           { 'U' => 'D' }
         ]
 
-        described_class.new(block, width: 2, height: 2,
-          entrance_position: ['U', 0, 0], exit_position: ['D', 1, 0])
+        described_class.new(block, width: 2, height: 2, entrance: ['U', 0, 0], exit: ['D', 1, 0])
       end
 
       it 'returns false' do
@@ -63,8 +60,7 @@ RSpec.describe Game do
           { 'U' => 'D' }
         ]
 
-        described_class.new(block, width: 2, height: 2,
-          entrance_position: ['U', 0, 0], exit_position: ['D', 1, 0])
+        described_class.new(block, width: 2, height: 2, entrance: ['U', 0, 0], exit: ['D', 1, 0])
       end
 
       it 'returns false' do
