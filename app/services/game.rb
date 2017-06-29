@@ -9,11 +9,11 @@ class Game
   end
 
   def play
-    @entrance_direction = entrance_position.shift
-    @exit_direction     = exit_position.shift
+    @entrance_direction = entrance_position.first
+    @exit_direction     = exit_position.first
 
-    @train = update_position(entrance_position, entrance_direction)
-    @goal  = update_position(exit_position,     exit_direction)
+    @train = update_position(entrance_position.last(2), entrance_direction)
+    @goal  = update_position(exit_position.last(2),     exit_direction)
 
     move(inverted_direction(entrance_direction))
   end
