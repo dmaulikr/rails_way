@@ -1,5 +1,5 @@
 RSpec.describe Railroad do
-  subject { described_class.new(2, 2) }
+  subject { described_class.new 2, 2, level: 4 }
 
   describe '#available_entrance_and_exit_positions' do
     context '2 x 2' do
@@ -14,7 +14,7 @@ RSpec.describe Railroad do
     end
 
     context '2 x 3' do
-      subject { described_class.new(2, 3) }
+      subject { described_class.new 2, 3 }
 
       it 'returns available entrance and exit positions' do
         expect(subject.available_entrance_and_exit_positions).to match_array([

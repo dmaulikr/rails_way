@@ -17,6 +17,23 @@ RSpec.describe Game do
       end
     end
 
+    context 'finding the exit in level 4' do
+      subject do
+        block = [
+          { 'R' => 'L' },
+          { 'D' => 'L' },
+          { 'U' => 'D', 'R' => 'L' },
+          { 'U' => 'L' }
+        ]
+
+        described_class.new(block, width: 2, height: 2, entrance: ['L', 0, 0], exit: ['L', 1, 0], level: 4)
+      end
+
+      it 'returns true' do
+        expect(subject.play).to eq(true)
+      end
+    end
+
     context 'hitting the left wall' do
       subject do
         block = [
