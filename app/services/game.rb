@@ -9,8 +9,8 @@ class Game
   end
 
   def play
-    @exit_direction     = exit_position.shift
     @entrance_direction = entrance_position.shift
+    @exit_direction     = exit_position.shift
 
     @train = update_position(entrance_position, entrance_direction)
     @goal  = update_position(exit_position,     exit_direction)
