@@ -1,7 +1,21 @@
 class GamesController < ApplicationController
   def show
-    @images = Dir[Rails.root.join 'app', 'assets', 'images', 'railsroads', '*'].map do |file|
-      "railsroads/#{file.split('/').last}"
-    end.take(4)
+    @size = case game_params[:level]
+    when '1' then [2, 2]
+    end
+
+    @game = Railroad.new(*@size, level: 4).games_permutation.detect(&:play)
+    # session[:game] = nil
+
+    @blocks = @game.blocks.shuffle.map { |block| { image: block.flatten.join } }.each_slice(2).to_a
+
+    @blocks[@game.entrance[1]][@game.entrance[2]].merge!(entrance: @game.entrance[0])
+    @blocks[@game.exit[1]][@game.exit[2]].merge!(exit: @game.exit[0])
+
+    @blocks.flatten!
+  end
+
+  def game_params
+    params.permit(:level)
   end
 end

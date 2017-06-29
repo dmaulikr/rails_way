@@ -1,7 +1,8 @@
 <div class='row align-items-start'>
   <div id='railroads' class='row align-items-center m-5'>
-    <% @images.each do |image| %>
-      <%= image_tag image, class: 'img-fluid p-1 col-6' %>
+    <% @blocks.each do |block| %>
+      <%= image_tag "railsroads/#{block[:image]}.jpg", class: 'img-fluid p-1 col-6',
+        data: { entrance: block[:entrance], exit: block[:exit] } %>
     <% end %>
   </ul>
 </div>

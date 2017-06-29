@@ -2,10 +2,12 @@ Modules.Games = class
   constructor: ->
     $('#railroads').sortable()
 
-    setEntranceIcon 'D'
+    entrance = $('img[data-entrance]')
+    setEntranceIcon entrance.data('entrance')
+    placeEntranceAndExitIcons entrance, $('#entrance-icon'), entrance.data('entrance')
 
-    placeEntranceAndExitIcons $($('#railroads img')[2]), $('#entrance-icon'), 'D'
-    placeEntranceAndExitIcons $($('#railroads img')[3]), $('#exit-icon'),     'D'
+    exit = $('img[data-exit]')
+    placeEntranceAndExitIcons exit, $('#exit-icon'), exit.data('exit')
 
   setEntranceIcon = (direction) ->
     icon = $('#entrance-icon')
