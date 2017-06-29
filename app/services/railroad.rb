@@ -1,8 +1,8 @@
 class Railroad
-  def initialize(width, height, level: 1)
+  def initialize(width, height, level: 4)
     @width  = width
     @height = height
-    @level  = level
+    @level  = level # width * height
   end
 
   def games_permutation
@@ -11,7 +11,7 @@ class Railroad
         games << Game.new(blocks, width: @width, height: @height,
                           entrance: entrance, exit: exit, level: @level)
       end
-    end
+    end.shuffle
   end
 
   def blocks_permutation

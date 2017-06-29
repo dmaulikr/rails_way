@@ -1,5 +1,7 @@
 class Game
-  def initialize(blocks, width:, height:, entrance:, exit:, level: 1)
+  attr_reader :blocks, :entrance, :exit
+
+  def initialize(blocks, width:, height:, entrance:, exit:, level: 4)
     @blocks   = blocks
     @width    = width
     @height   = height
@@ -17,7 +19,7 @@ class Game
 
   private
 
-  attr_reader :blocks, :width, :height, :entrance, :exit, :train, :goal, :level
+  attr_reader :width, :height, :train, :goal, :level
 
   def move(direction, step: 0)
     @train = update_position(train, direction)
@@ -25,7 +27,7 @@ class Game
     return true  if level <= step && train == goal
     return false if train.any?(&:negative?) || train.first >= height || train.last >= width # Hits the wall
 
-    directions = blocks.each_slice(width).to_a[train.first][train.last]
+    directions = Marshal.load(Marshal.dump(blocks)).each_slice(width).to_a[train.first][train.last]
     directions.merge!(directions.invert)
 
     next_direction = directions[inverted_direction(direction)]
