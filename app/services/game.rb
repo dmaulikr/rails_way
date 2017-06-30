@@ -10,7 +10,7 @@ class Game
     @level    = level
   end
 
-  def play
+  def correct?
     @train = update_position(entrance.last(2), entrance.first)
     @goal  = update_position(exit.last(2),     exit.first)
 

@@ -1,5 +1,5 @@
 RSpec.describe Game do
-  describe '#play' do
+  describe '#correct?' do
     context 'finding the exit' do
       subject do
         block = [
@@ -13,7 +13,7 @@ RSpec.describe Game do
       end
 
       it 'returns true' do
-        expect(subject.play).to eq(true)
+        expect(subject.correct?).to eq(true)
       end
     end
 
@@ -30,7 +30,7 @@ RSpec.describe Game do
       end
 
       it 'returns true' do
-        expect(subject.play).to eq(true)
+        expect(subject.correct?).to eq(true)
       end
     end
 
@@ -47,7 +47,7 @@ RSpec.describe Game do
       end
 
       it 'returns false' do
-        expect(subject.play).to eq(false)
+        expect(subject.correct?).to eq(false)
       end
     end
 
@@ -64,7 +64,7 @@ RSpec.describe Game do
       end
 
       it 'returns false' do
-        expect(subject.play).to eq(false)
+        expect(subject.correct?).to eq(false)
       end
     end
 
@@ -81,7 +81,7 @@ RSpec.describe Game do
       end
 
       it 'returns false' do
-        expect(subject.play).to eq(false)
+        expect(subject.correct?).to eq(false)
       end
     end
   end
