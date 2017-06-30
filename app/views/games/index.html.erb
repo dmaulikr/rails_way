@@ -27,14 +27,19 @@
 </div>
 
 <% content_for :navbar do %>
-  <nav class='navbar fixed-bottom navbar-light bg-faded'>
-    <div class='col text-center'>
-      <%= fa_icon 'train' %><br><small>Level <%= params[:level] %></small>
-    </div>
+  <div class='col text-center'>
+    <%= link_to root_path do %>
+      <div style='width: 100%; height: 100%;'>
+        <%= fa_icon 'angle-left' %><br>Main menu
+      </div>
+    <% end %>
+  </div>
 
-    <div class='col text-center'>
-      <%= fa_icon 'info-circle' %><br>
-      <%= link_to 'About', about_path %>
-    </div>
-  </nav>
+  <div class='col text-center'>
+    <%= link_to instructions_path do %>
+      <div style='width: 100%; height: 100%;'>
+        <%= fa_icon 'sticky-note' %><br>Instructions
+      </div>
+    <% end %>
+  </div>
 <% end %>

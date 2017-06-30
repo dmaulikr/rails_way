@@ -19,16 +19,19 @@
 <div id='exit-icon'>🏁</div>
 
 <% content_for :navbar do %>
-  <div class='col text-center' style='color: #777;'>
-    <%= fa_icon 'train' %><br><small>Level <%= params[:level] %></small>
+  <div class='col text-center'>
+    <%= link_to games_path, data: { confirm: 'Are you sure you want to quit?' } do %>
+      <div style='width: 100%; height: 100%;'>
+        <%= fa_icon 'times' %><br>Quit
+      </div>
+    <% end %>
   </div>
 
-  <div class='col text-center' style='color: #777;'>
+  <div class='col text-center'>
     <%= fa_icon 'clock-o' %><br><span id='timer'><%= @time %></span>
   </div>
 
-  <div class='col text-center' style='color: #000;'>
-    <%= fa_icon 'gamepad' %><br>
-    <%= link_to 'All levels', games_path, data: { confirm: 'Are you sure you want to quit?' } %>
+  <div class='col text-center''>
+    <%= fa_icon 'gamepad' %><br><small>Level <%= params[:level] %></small>
   </div>
 <% end %>
