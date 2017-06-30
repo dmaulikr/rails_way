@@ -41,4 +41,3 @@ Modules.Games = class
     icon.css
       top:  iconTop  + 'px'
       left: iconLeft + 'px'
-
