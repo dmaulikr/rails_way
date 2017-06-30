@@ -3,6 +3,7 @@ Modules.Games = class
     $('#railroads').sortable()
 
     setupForm()
+    setupTimer()
 
     entrance = $('img[data-entrance]')
     setEntranceIcon entrance.data('entrance')
@@ -18,6 +19,23 @@ Modules.Games = class
       )
 
       $('input[name=blocks_positions]').val(blocks_positions)
+
+  setupTimer = ->
+    time = parseInt $('#timer').html()
+
+    setInterval(->
+      $('#timer').html(--time) if time > 0
+    , 1000)
+
+    setTimeout(->
+      $('#timer').parent().css({ color: '#FF4136' })
+    , (time - 10) * 1000)
+
+    setTimeout(->
+      alert('Time out!')
+      $('body').empty()
+      location.reload()
+    , time * 1000)
 
   setEntranceIcon = (direction) ->
     icon = $('#entrance-icon')

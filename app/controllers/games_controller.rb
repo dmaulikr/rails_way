@@ -1,4 +1,6 @@
 class GamesController < ApplicationController
+  before_action :set_time, only: :show
+
   def show
     railroad = Railroad.new(*dimensions)
     railroad.prepare!
@@ -33,6 +35,16 @@ class GamesController < ApplicationController
 
   def dimensions
     [2, 2]
+  end
+
+  def set_time
+    @time = case game_params[:level].to_i
+            when 1 then 20
+            when 2 then 15
+            when 3 then 10
+            when 4 then 8
+            else        5
+            end
   end
 
   def game_params
