@@ -4,7 +4,15 @@
       <%= image_tag "railsroads/#{block[:image]}.jpg", class: 'img-fluid p-1 col-6',
         data: { entrance: block[:entrance], exit: block[:exit] } %>
     <% end %>
-  </ul>
+  </div>
+</div>
+
+<div class='text-center'>
+  <%= form_with url: check_game_path(params[:level]) do |f| %>
+    <%= f.hidden_field :blocks_positions %>
+
+    <h1><%= f.submit 'Check', class: 'btn btn-lg', data: { disable_with: 'Wait...' } %></h1>
+  <% end %>
 </div>
 
 <div id='entrance-icon'></div>

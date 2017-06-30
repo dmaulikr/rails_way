@@ -2,12 +2,22 @@ Modules.Games = class
   constructor: ->
     $('#railroads').sortable()
 
+    setupForm()
+
     entrance = $('img[data-entrance]')
     setEntranceIcon entrance.data('entrance')
     placeEntranceAndExitIcons entrance, $('#entrance-icon'), entrance.data('entrance')
 
     exit = $('img[data-exit]')
     placeEntranceAndExitIcons exit, $('#exit-icon'), exit.data('exit')
+
+  setupForm = ->
+    $('form').submit (e) ->
+      blocks_positions = JSON.stringify($.map $('#railroads img'), (img) ->
+        img.src.match(/.*\/(.*)-.*/)[1]
+      )
+
+      $('input[name=blocks_positions]').val(blocks_positions)
 
   setEntranceIcon = (direction) ->
     icon = $('#entrance-icon')

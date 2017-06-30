@@ -1,7 +1,27 @@
 class Railroad
+  attr_reader :width, :height, :game, :blocks
+
   def initialize(width, height)
     @width  = width
     @height = height
+  end
+
+  def prepare!
+    prepare_game!
+    prepare_blocks!
+  end
+
+  def prepare_game!
+    @game = games_permutation.detect { |game| game.correct?(generating: true) }
+  end
+
+  def prepare_blocks!
+    @blocks = game.blocks.shuffle.map { |block| { image: block.flatten.join } }.each_slice(2).to_a
+
+    @blocks[game.entrance[1]][game.entrance[2]].merge!(entrance: game.entrance[0])
+    @blocks[game.exit[1]][game.exit[2]].merge!(exit: game.exit[0])
+
+    @blocks.flatten!
   end
 
   def games_permutation

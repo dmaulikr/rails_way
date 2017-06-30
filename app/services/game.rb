@@ -7,13 +7,13 @@ class Game
     @height   = height
     @entrance = entrance
     @exit     = exit
-
-    @difficulty_level = width * height
   end
 
-  def correct?
+  def correct?(generating: false)
     @train = update_position(entrance.last(2), entrance.first)
     @goal  = update_position(exit.last(2),     exit.first)
+
+    @difficulty_level = generating ? width * height : 1
 
     move(inverted_direction(entrance.first))
   end

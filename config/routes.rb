@@ -3,5 +3,9 @@ Rails.application.routes.draw do
 
   get 'about', to: 'pages#about'
 
-  resources :games, param: :level, only: %i[index show]
+  resources :games, param: :level, only: %i[index show] do
+    member do
+      post :check
+    end
+  end
 end
