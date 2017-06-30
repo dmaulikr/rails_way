@@ -1,6 +1,10 @@
 class GamesController < ApplicationController
   before_action :set_time, only: :show
 
+  def index
+    session[:current_level] ||= 1
+  end
+
   def show
     railroad = Railroad.new(*dimensions)
     railroad.prepare!
@@ -23,8 +27,12 @@ class GamesController < ApplicationController
       entrance: session[:railroad]['entrance'], exit: session[:railroad]['exit'])
 
     if game.correct?
+      current_level = game_params[:level].to_i.next
+
+      session[:current_level] = current_level
       session.delete(:railroad)
-      redirect_to game_path(level: game_params[:level].to_i.next)
+
+      redirect_to game_path(level: current_level)
     else
       @blocks = session[:railroad]['blocks'].map(&:symbolize_keys)
       render :show

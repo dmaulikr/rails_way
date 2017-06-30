@@ -16,7 +16,11 @@
     <div id='container'>
       <%= yield %>
 
-      <%= content_for?(:navbar) && yield(:navbar) %>
+      <% if content_for?(:navbar) %>
+        <nav class='navbar fixed-bottom navbar-light bg-faded'>
+          <%= yield :navbar %>
+        </nav>
+      <% end %>
     </div>
   </body>
 </html>

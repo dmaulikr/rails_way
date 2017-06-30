@@ -1,0 +1,40 @@
+<div class='text-center'>
+  <h1 class='display-4 m-5'>Rails Way</h1>
+
+  <div class='row m-1'>
+    <% (1..session[:current_level]).each do |level| %>
+      <div class='col-4 p-1'>
+        <div class='card card-inverse' style='background-color: #00bcd4;'>
+          <%= link_to game_path(level: level), class: 'level-card' do %>
+            <div class='card-block p-2'>
+              <h4 class='card-title pt-2'>Level <%= level %></h4>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+
+    <div class='col-4 p-1'>
+      <div class='card card-inverse' style='background-color: rgba(0, 188, 212, 0.3);'>
+        <div class='card-block p-2'>
+          <h4 class='card-title pt-2' style='color: white;'>
+            Level <%= session[:current_level].next %>
+          </h4>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% content_for :navbar do %>
+  <nav class='navbar fixed-bottom navbar-light bg-faded'>
+    <div class='col text-center'>
+      <%= fa_icon 'train' %><br><small>Level <%= params[:level] %></small>
+    </div>
+
+    <div class='col text-center'>
+      <%= fa_icon 'info-circle' %><br>
+      <%= link_to 'About', about_path %>
+    </div>
+  </nav>
+<% end %>

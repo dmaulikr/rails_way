@@ -1,5 +1,5 @@
 Modules.Games = class
-  constructor: ->
+  show: ->
     $('#railroads').sortable()
 
     setupForm()
