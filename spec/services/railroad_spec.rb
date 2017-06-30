@@ -1,5 +1,5 @@
 RSpec.describe Railroad do
-  subject { described_class.new 2, 2, level: 4 }
+  subject { described_class.new 2, 2 }
 
   describe '#games_permutation' do
     it 'returns an array with all possible games permutation' do

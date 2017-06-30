@@ -4,7 +4,7 @@ class GamesController < ApplicationController
     when '1' then [2, 2]
     end
 
-    @game = Railroad.new(*@size, level: 4).games_permutation.detect(&:correct?)
+    @game = Railroad.new(*@size).games_permutation.detect(&:correct?)
     # session[:game] = nil
 
     @blocks = @game.blocks.shuffle.map { |block| { image: block.flatten.join } }.each_slice(2).to_a

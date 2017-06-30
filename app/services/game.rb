@@ -1,13 +1,14 @@
 class Game
   attr_reader :blocks, :entrance, :exit
 
-  def initialize(blocks, width:, height:, entrance:, exit:, level: 4)
+  def initialize(blocks, width:, height:, entrance:, exit:)
     @blocks   = blocks
     @width    = width
     @height   = height
     @entrance = entrance
     @exit     = exit
-    @level    = level
+
+    @difficulty_level = width * height
   end
 
   def correct?
@@ -19,12 +20,12 @@ class Game
 
   private
 
-  attr_reader :width, :height, :train, :goal, :level
+  attr_reader :width, :height, :train, :goal, :difficulty_level
 
   def move(direction, step: 0)
     @train = update_position(train, direction)
 
-    return true  if level <= step && train == goal
+    return true  if difficulty_level <= step && train == goal
     return false if train.any?(&:negative?) || train.first >= height || train.last >= width # Hits the wall
 
     directions = Marshal.load(Marshal.dump(blocks)).each_slice(width).to_a[train.first][train.last]

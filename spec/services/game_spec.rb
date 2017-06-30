@@ -1,6 +1,6 @@
 RSpec.describe Game do
   describe '#correct?' do
-    context 'finding the exit' do
+    context 'when there is a way to find the exit' do
       subject do
         block = [
           { 'U' => 'R' },
@@ -17,7 +17,7 @@ RSpec.describe Game do
       end
     end
 
-    context 'finding the exit in level 4' do
+    context 'when there is a way to find the exit' do
       subject do
         block = [
           { 'R' => 'L' },
@@ -26,7 +26,7 @@ RSpec.describe Game do
           { 'U' => 'L' }
         ]
 
-        described_class.new(block, width: 2, height: 2, entrance: ['L', 0, 0], exit: ['L', 1, 0], level: 4)
+        described_class.new(block, width: 2, height: 2, entrance: ['L', 0, 0], exit: ['L', 1, 0])
       end
 
       it 'returns true' do
