@@ -269,6 +269,7 @@ extension Session: WebViewDelegate {
 }
 
 extension Session: WKNavigationDelegate {
+// extension Session: WKNavigationDelegate, WKUIDelegate {
     public func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> ()) {
         let navigationDecision = NavigationDecision(navigationAction: navigationAction)
         decisionHandler(navigationDecision.policy)
@@ -278,6 +279,26 @@ extension Session: WKNavigationDelegate {
         } else if navigationDecision.shouldReloadPage {
             reload()
         }
+    }
+
+    func webView(_ webView: WKWebView, runJavaScriptConfirmPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping (Bool) -> Void) {
+        print("webView:\(webView) runJavaScriptAlertPanelWithMessage:\(message) initiatedByFrame:\(frame) completionHandler:\(completionHandler)")
+
+        webView.navigationDelegate = self
+        webView.uiDelegate = self
+
+        // Alert Controller
+        let confirm = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+
+        confirm.addAction(UIAlertAction(title: "Okay", style: .default) { (action) in
+            completionHandler(true)
+        })
+
+        confirm.addAction(UIAlertAction(title: "Cancel", style: .cancel) { (action) in
+            completionHandler(false)
+        })
+
+        present(confirm, animated: true, completion: nil)
     }
 
     fileprivate struct NavigationDecision {
