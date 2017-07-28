@@ -21,7 +21,6 @@
 		8442C5A81C9F83D200FD8CC7 /* UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8442C5A71C9F83D200FD8CC7 /* UITests.swift */; };
 		92DF45171C81149B0064E606 /* NumbersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92DF45161C81149B0064E606 /* NumbersViewController.swift */; };
 		939591661F0636CC00BA99AC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 939591651F0636CC00BA99AC /* Images.xcassets */; };
-		939591681F0636F800BA99AC /* logo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 939591671F0636F800BA99AC /* logo.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,7 +86,6 @@
 		8442C5A91C9F83D200FD8CC7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		92DF45161C81149B0064E606 /* NumbersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumbersViewController.swift; sourceTree = "<group>"; };
 		939591651F0636CC00BA99AC /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		939591671F0636F800BA99AC /* logo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = logo.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,7 +140,6 @@
 				1FC168221B55A16C00AA6F43 /* LaunchScreen.xib */,
 				1F8FC6AA1B55A34500A781C8 /* Main.storyboard */,
 				939591651F0636CC00BA99AC /* Images.xcassets */,
-				939591671F0636F800BA99AC /* logo.jpg */,
 				1FC168171B55A16C00AA6F43 /* Supporting Files */,
 			);
 			path = TurbolinksDemo;
@@ -285,7 +282,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				1F8FC6AC1B55A34500A781C8 /* Main.storyboard in Resources */,
-				939591681F0636F800BA99AC /* logo.jpg in Resources */,
 				939591661F0636CC00BA99AC /* Images.xcassets in Resources */,
 				1FC168241B55A16C00AA6F43 /* LaunchScreen.xib in Resources */,
 				2230A7ED1C869BD2001B4AC1 /* ErrorView.xib in Resources */,
