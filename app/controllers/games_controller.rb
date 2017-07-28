@@ -47,10 +47,10 @@ class GamesController < ApplicationController
 
   def set_time
     @time = case game_params[:level].to_i
-            when 1, 2 then 20
-            when 3..5 then 15
-            when 6..9 then 10
-            else           5
+            when 1, 2 then 60
+            when 3..5 then 45
+            when 6..9 then 30
+            else           15
             end
   end
 
