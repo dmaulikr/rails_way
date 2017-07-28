@@ -32,7 +32,7 @@ class GamesController < ApplicationController
       session[:current_level] = next_level
       session.delete(:railroad)
 
-      redirect_to game_path(level: next_level)
+      redirect_to game_path(level: next_level), notice: "Yay! Now try level #{next_level}!"
     else
       @blocks = session[:railroad]['blocks'].map(&:symbolize_keys)
       render :show
