@@ -1,5 +1,12 @@
 $(document).on 'turbolinks:load', ->
   setTimeout(->
+    sharedClasses = [
+      'FlashMessages'
+    ]
+
+    $.each sharedClasses, (_, klass) ->
+      new Modules[klass]()
+
     $body = $('body')
 
     moduleNames = $.map $body.data('controller').split('/'), (name) ->

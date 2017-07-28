@@ -38,9 +38,14 @@ Modules.Games = class
     , (time - 10) * 1000)
 
     setTimeout(->
-      alert('Time out!')
-      $('body').empty()
-      location.reload()
+      (new Modules.FlashMessages).notify
+        type: 'error',
+        title: 'Game over!',
+        text: 'Time out :(',
+        confirmButtonText: 'Retry',
+        onClose: ->
+          $('body').html('Loading...')
+          location.reload()
     , time * 1000)
 
   setEntranceIcon = (direction) ->
