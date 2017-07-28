@@ -9,3 +9,8 @@ Use [Homebrew](https://brew.sh) on **macOS** (run `brew update` before installin
 | Library | Notes                    | macOS               | Linux                                                 |
 | :------ | :----------------------- | :------------------ | :---------------------------------------------------- |
 | Yarn    | JS dependency management | `brew install yarn` | [Docs](https://yarnpkg.com/en/docs/install#linux-tab) |
+
+## How to deploy
+
+    git push heroku master
+
