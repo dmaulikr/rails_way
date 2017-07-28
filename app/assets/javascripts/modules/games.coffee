@@ -3,6 +3,7 @@ Modules.Games = class
     $('#railroads').sortable()
 
     setupForm()
+    clearTimerouts()
     setupTimer()
 
     entrance = $('img[data-entrance]')
@@ -19,6 +20,11 @@ Modules.Games = class
       )
 
       $('input[name=blocks_positions]').val(blocks_positions)
+
+  clearTimerouts = ->
+    id = window.setTimeout((->), 0)
+    while id--
+      window.clearTimeout(id)
 
   setupTimer = ->
     time = parseInt $('#timer').html()
