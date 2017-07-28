@@ -6,6 +6,9 @@
 #= require popper
 #= require bootstrap-sprockets
 
+# node_modules
+#= require sweetalert2/dist/sweetalert2.min
+
 #= require modules
 #= require_tree ./modules
 #= require routes
