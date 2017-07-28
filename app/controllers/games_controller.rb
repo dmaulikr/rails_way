@@ -27,12 +27,12 @@ class GamesController < ApplicationController
       entrance: session[:railroad]['entrance'], exit: session[:railroad]['exit'])
 
     if game.correct?
-      current_level = game_params[:level].to_i.next
+      next_level = game_params[:level].to_i.next
 
-      session[:current_level] = current_level
+      session[:current_level] = next_level
       session.delete(:railroad)
 
-      redirect_to game_path(level: current_level)
+      redirect_to game_path(level: next_level)
     else
       @blocks = session[:railroad]['blocks'].map(&:symbolize_keys)
       render :show
