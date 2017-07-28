@@ -3,7 +3,7 @@
 
   <div class='row m-1'>
     <% (1..session[:current_level]).each do |level| %>
-      <div class='col-4 p-1'>
+      <div class='col p-1'>
         <div class='card card-inverse' style='background-color: #00bcd4;'>
           <%= link_to game_path(level: level), class: 'level-card' do %>
             <div class='card-block p-2'>
@@ -13,16 +13,6 @@
         </div>
       </div>
     <% end %>
-
-    <div class='col-4 p-1'>
-      <div class='card card-inverse' style='background-color: rgba(0, 188, 212, 0.3);'>
-        <div class='card-block p-2'>
-          <h4 class='card-title pt-2' style='color: white;'>
-            Level <%= session[:current_level].next %>
-          </h4>
-        </div>
-      </div>
-    </div>
   </div>
 </div>
 
