@@ -2,7 +2,7 @@ import UIKit
 import WebKit
 import Turbolinks
 
-class ApplicationController: UINavigationController {
+class ApplicationController: UINavigationController, WKUIDelegate {
     fileprivate let url = URL(string: "https://rails-way-game.herokuapp.com/")!
     // fileprivate let url = URL(string: "http://localhost:3000")!
     // fileprivate let url = URL(string: "http://lucascaton.local:3000")!
@@ -30,6 +30,7 @@ class ApplicationController: UINavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
         presentVisitableForSession(session, url: url)
+        session.webView.uiDelegate = self
     }
 
     fileprivate func presentVisitableForSession(_ session: Session, url: URL, action: Action = .Advance) {
@@ -59,6 +60,23 @@ class ApplicationController: UINavigationController {
 
         let authNavigationController = UINavigationController(rootViewController: authenticationController)
         present(authNavigationController, animated: true, completion: nil)
+    }
+
+    func webView(_ webView: WKWebView, runJavaScriptConfirmPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping (Bool) -> Void) {
+        print("webView:\(webView) runJavaScriptAlertPanelWithMessage:\(message) initiatedByFrame:\(frame) completionHandler:\(completionHandler)")
+
+        // Alert Controller
+        let confirm = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+
+        confirm.addAction(UIAlertAction(title: "Okay", style: .default) { (action) in
+            completionHandler(true)
+        })
+
+        confirm.addAction(UIAlertAction(title: "Cancel", style: .cancel) { (action) in
+            completionHandler(false)
+        })
+
+        present(confirm, animated: true, completion: nil)
     }
 }
 

@@ -1,5 +1,7 @@
 $(document).on 'turbolinks:load', ->
   setTimeout(->
+    alert('This alert should appear on iOS!') # TODO: This is just a test, remove-me!
+
     sharedClasses = [
       'FlashMessages'
     ]
