@@ -37,7 +37,7 @@ class WebView: WKWebView {
         translatesAutoresizingMaskIntoConstraints = false
         scrollView.decelerationRate = UIScrollViewDecelerationRateNormal
     }
-    
+
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
@@ -73,7 +73,7 @@ class WebView: WKWebView {
             NSLog("Error encoding arguments for JavaScript function `%@'", functionExpression)
             return
         }
-        
+
         evaluateJavaScript(script) { (result, error) in
             if let result = result as? [String: AnyObject] {
                 if let error = result["error"] as? String, let stack = result["stack"] as? String {
@@ -109,7 +109,7 @@ class WebView: WKWebView {
             let string = NSString(data: data, encoding: String.Encoding.utf8.rawValue) as String? {
                 return string[string.characters.index(after: string.startIndex) ..< string.characters.index(before: string.endIndex)]
         }
-        
+
         return nil
     }
 }
@@ -117,7 +117,7 @@ class WebView: WKWebView {
 extension WebView: WKScriptMessageHandler {
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
         guard let message = ScriptMessage.parse(message) else { return }
-        
+
         switch message.name {
         case .PageLoaded:
             pageLoadDelegate?.webView(self, didLoadPageWithRestorationIdentifier: message.restorationIdentifier!)

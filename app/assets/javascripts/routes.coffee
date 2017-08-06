@@ -1,18 +1,24 @@
 $(document).on 'turbolinks:load', ->
-  $ ->
-    setTimeout(->
-      $body = $('body')
+  setTimeout(->
+    sharedClasses = [
+      'FlashMessages'
+    ]
 
-      moduleNames = $.map $body.data('controller').split('/'), (name) ->
-        $.map(name.split('_'), (string) -> string.charAt(0).toUpperCase() + string.slice(1)).join('')
+    $.each sharedClasses, (_, klass) ->
+      new Modules[klass]()
 
-      moduleClass = moduleNames.reduce ((klass, moduleName) ->
-        if klass then klass[moduleName] else undefined
-      ), Modules
+    $body = $('body')
 
-      if moduleClass isnt undefined
-        module = new moduleClass()
+    moduleNames = $.map $body.data('controller').split('/'), (name) ->
+      $.map(name.split('_'), (string) -> string.charAt(0).toUpperCase() + string.slice(1)).join('')
 
-        action = $body.data('action')
-        module[action]() if $.isFunction(module[action])
-    , 100) # Not sure why, but iOS Safari won't work properly without it
+    moduleClass = moduleNames.reduce ((klass, moduleName) ->
+      if klass then klass[moduleName] else undefined
+    ), Modules
+
+    if moduleClass isnt undefined
+      module = new moduleClass()
+
+      action = $body.data('action')
+      module[action]() if $.isFunction(module[action])
+  , 100) # Not sure why, but iOS Safari won't work properly without it

@@ -3,6 +3,8 @@ Modules.Games = class
     $('#railroads').sortable()
 
     setupForm()
+    setupQuit()
+    clearTimerouts()
     setupTimer()
 
     entrance = $('img[data-entrance]')
@@ -20,6 +22,29 @@ Modules.Games = class
 
       $('input[name=blocks_positions]').val(blocks_positions)
 
+  setupQuit = ->
+    link = $('a#quit-game')
+
+    link.on 'click', (event) ->
+      event.preventDefault()
+
+      (new Modules.FlashMessages).notify(
+        type: 'warning',
+        title: 'Are you sure?',
+        text: 'Do you want to quit?',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Quit!'
+      ).then (->
+        Turbolinks.visit link.attr('href')
+      ), -> null # Cancel button does nothing
+
+  clearTimerouts = ->
+    id = window.setTimeout((->), 0)
+    while id--
+      window.clearTimeout(id)
+
   setupTimer = ->
     time = parseInt $('#timer').html()
 
@@ -32,9 +57,14 @@ Modules.Games = class
     , (time - 10) * 1000)
 
     setTimeout(->
-      alert('Time out!')
-      $('body').empty()
-      location.reload()
+      (new Modules.FlashMessages).notify
+        type: 'error',
+        title: 'Game over!',
+        text: 'Time out :(',
+        confirmButtonText: 'Retry',
+        onClose: ->
+          $('body').html('Loading...')
+          location.reload()
     , time * 1000)
 
   setEntranceIcon = (direction) ->

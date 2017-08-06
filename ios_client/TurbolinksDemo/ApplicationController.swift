@@ -3,7 +3,10 @@ import WebKit
 import Turbolinks
 
 class ApplicationController: UINavigationController {
-    fileprivate let url = URL(string: "http://localhost:3000")!
+    fileprivate let url = URL(string: "https://rails-way-game.herokuapp.com/")!
+    // fileprivate let url = URL(string: "http://localhost:3000")!
+    // fileprivate let url = URL(string: "http://lucascaton.local:3000")!
+
     fileprivate let webViewProcessPool = WKProcessPool()
 
     fileprivate var application: UIApplication {

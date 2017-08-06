@@ -12,7 +12,9 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body data-controller='<%= controller_path %>' data-action='<%= action_name %>'>
+  <body data-controller='<%= controller_path %>' data-action='<%= action_name %>'
+    data-flash='<%= flash_messages_as_json %>'>
+
     <div id='container'>
       <%= yield %>
 
